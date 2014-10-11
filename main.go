@@ -27,9 +27,8 @@ type Minecraft struct {
 }
 
 func (m *Minecraft) Run(cmd string) error {
-	//	  screen -S Minecraft -p 0 -X stuff "`printf "/weather rain\r"`"
-	// return exec.Command("screen", "-S", m.Screen, "-p", "0", "-X", "stuff", fmt.Sprintf(`printf "/%s\r"`, cmd)).Run()
-	return exec.Command("touch", "itworked.test").Run()
+	// screen -S Minecraft -p 0 -X stuff "`printf "/weather rain\r"`"
+	return exec.Command("screen", "-S", m.Screen, "-p", "0", "-X", "stuff", fmt.Sprintf(`printf "/%s\r"`, cmd)).Run()
 }
 
 func main() {
