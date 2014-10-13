@@ -13,7 +13,6 @@ import (
 
 type MinecraftRunner interface {
 	Run(cmd string) error
-	FindCmd(cmd string) string
 }
 
 type DummyMinecraft struct {
@@ -39,27 +38,14 @@ type MinecraftCmdCollection struct {
 
 func (mc *MinecraftCmdCollection) FromJson(jsonStr []byte) error {
 	var data = &mc.Pool
-	b := []byte(jsonStr)
-	return json.Unmarshal(b, data)
+	return json.Unmarshal(jsonStr, data)
 }
 
 func (m *Minecraft) Run(cmd string) error {
-	// screen -S Minecraft -p 0 -X stuff "`printf "/weather rain\r"`"
 	return exec.Command("screen", "-S", m.Screen, "-p", "0", "-X", "stuff", fmt.Sprintf(`/%s\r`, cmd)).Run()
 }
 
-func (m *Minecraft) FindCmd(cmdName string) string {
-	mc := new(MinecraftCmdCollection)
-	content, err := ioutil.ReadFile("commands.json")
-	if err != nil {
-		fmt.Print("Error:", err)
-	}
-
-	mc.FromJson(content)
-	return mc.Pool[cmdName].Command
-}
-
-func (m *DummyMinecraft) FindCmd(cmdName string) string {
+func FindCmd(cmdName string) string {
 	mc := new(MinecraftCmdCollection)
 	content, err := ioutil.ReadFile("commands.json")
 	if err != nil {
@@ -90,7 +76,7 @@ func main() {
 			return
 		}
 
-		cmd := mc.FindCmd(r.URL.Path)
+		cmd := FindCmd(r.URL.Path)
 
 		err := mc.Run(cmd)
 		if err != nil {
