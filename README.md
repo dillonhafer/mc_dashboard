@@ -1,12 +1,12 @@
 # Minecraft Dashboard
 
 mc_dashboard is a simple webserver to allow web-access issuance
-of Minecraft server commands.
+of Minecraft server commands for servers using [screen](http://linux.die.net/man/1/screen).
 
 ## Usage
 
     usage:  mc_dashboard [options]
-      -screen="Minecraft": [screen](http://linux.die.net/man/1/screen) of running Minecraft server
+      -screen="Minecraft": screen of running Minecraft server
 
 ## Copyright
 
