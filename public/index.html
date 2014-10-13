@@ -18,23 +18,31 @@
   </nav>
   <br />
   <div class='row'>
-    <div class='large-12 columns'>
-      <h2 class='subheader'>Weather</h2>
-      <ul class='large-block-grid-4 small-block-grid-2'>
-        <li><a href='/api/weather/clear' class='small button expand radius'>Clear</a></li>
-        <li><a href='/api/weather/rain' class='small button expand radius'>Rain</a></li>
-        <li><a href='/api/weather/thunder' class='small button expand radius'>Thunder</a></li>
-      </ul>
-      <h2 class='subheader'>Time of Day</h2>
-      <ul class='large-block-grid-4 small-block-grid-2'>
-        <li><a href='/api/time/day' class='small button expand radius alert'>Day</a></li>
-        <li><a href='/api/time/night' class='small button expand radius alert'>Night</a></li>
-      </ul>
-      <h2 class='subheader'>Spawners</h2>
-      <ul class='large-block-grid-4 small-block-grid-2'>
-        <li><a href='/api/spawn/ozelot' class='small button expand radius secondary'>Ozelot</a></li>
-        <li><a href='/api/spawn/wolf' class='small button expand radius secondary'>Wolf</a></li>
-      </ul>
+    <div class='large-12 columns'>      
+      <ul class='large-block-grid-3 small-block-grid-1'>
+        <li>
+          <button href="#" data-dropdown="weather" aria-controls="weather" aria-expanded="false" class="button expand radius dropdown">Weather</button><br>
+          <ul id="weather" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
+            <li><a href='/api/weather/clear'>Clear</a></li>
+            <li><a href='/api/weather/rain'>Rain</a></li>
+            <li><a href='/api/weather/thunder'>Thunder</a></li>
+          </ul>
+        </li>
+        <li>
+          <button href="#" data-dropdown="time" aria-controls="time" aria-expanded="false" class="button expand alert radius dropdown">Time</button><br>
+          <ul id="time" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
+            <li><a href='/api/time/day'>Day</a></li>
+            <li><a href='/api/time/night'>Night</a></li>
+          </ul>
+        </li>
+        <li>
+          <button href="#" data-dropdown="spawners" aria-controls="spawners" aria-expanded="false" class="button expand secondary radius dropdown">Spawners</button><br>
+          <ul id="spawners" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
+            <li><a href='/api/spawn/ozelot'>Ozelot</a></li>
+            <li><a href='/api/spawn/wolf'>Wolf</a></li>
+          </ul>
+        </li>
+      </ul>      
     </div>
   </div>
   
