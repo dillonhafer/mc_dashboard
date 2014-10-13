@@ -20,7 +20,7 @@ type DummyMinecraft struct {
 }
 
 func (dm *DummyMinecraft) Run(cmd string) error {
-	_, err := fmt.Fprintf(dm.Logger, "DummyMinecraft: %v", cmd)
+	_, err := fmt.Fprintf(dm.Logger, "DummyMinecraft: %v\n", cmd)
 	return err
 }
 
@@ -56,12 +56,35 @@ func FindCmd(cmdName string) string {
 	return mc.Pool[cmdName].Command
 }
 
+func homePage(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Home page")
+	http.FileServer(http.Dir("public"))
+}
+
+func commandApi(mc MinecraftRunner) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != "POST" {
+			w.WriteHeader(http.StatusBadRequest)
+			fmt.Fprint(w, "Command Must be a POST\n")
+			return
+		}
+
+		cmd := FindCmd(r.URL.Path[4:])
+		err := mc.Run(cmd)
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			fmt.Fprintf(w, "Error: %v", err)
+			return
+		}
+	}
+}
+
 func main() {
 	var screen string
+	var mc MinecraftRunner
+
 	flag.StringVar(&screen, "screen", "", "runs commands in specific screen")
 	flag.Parse()
-
-	var mc MinecraftRunner
 
 	if screen == "" {
 		mc = &DummyMinecraft{Logger: os.Stderr}
@@ -69,22 +92,13 @@ func main() {
 		mc = &Minecraft{Screen: screen}
 	}
 
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		if r.Method != "POST" {
-			w.WriteHeader(http.StatusBadRequest)
-			fmt.Fprint(w, "Command Must be a POST\n")
-			return
-		}
+	fs := http.FileServer(http.Dir("public"))
 
-		cmd := FindCmd(r.URL.Path)
+	http.Handle("/", fs)
+	http.HandleFunc("/api/", commandApi(mc))
 
-		err := mc.Run(cmd)
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			fmt.Fprintf(w, "Error: %v", err)
-			return
-		}
-	})
+	fmt.Println("Server running and listening on port 8000")
+	fmt.Println("Ctrl-C to shutdown server")
 
 	err := http.ListenAndServe(":8000", nil)
 	fmt.Fprintln(os.Stderr, err)
