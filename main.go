@@ -45,7 +45,7 @@ func (mc *MinecraftCmdCollection) FromJson(jsonStr []byte) error {
 
 func (m *Minecraft) Run(cmd string) error {
 	// screen -S Minecraft -p 0 -X stuff "`printf "/weather rain\r"`"
-	return exec.Command("screen", "-S", m.Screen, "-p", "0", "-X", "stuff", fmt.Sprintf(`printf "/%s\r"`, cmd)).Run()
+	return exec.Command("screen", "-S", m.Screen, "-p", "0", "-X", "stuff", fmt.Sprintf(`/%s\r`, cmd)).Run()
 }
 
 func (m *Minecraft) FindCmd(cmdName string) string {
