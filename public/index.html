@@ -1,0 +1,50 @@
+<html>
+<head>
+  <title>MC Tools</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">  
+  <link rel="apple-touch-icon" href="/custom_icon.png">
+  <link rel="stylesheet" href="/foundation/css/foundation.css" />
+  <script src="/foundation/js/vendor/modernizr.js"></script>
+</head>
+<body>
+  <nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="/">Minecraft Tools</a></h1>
+    </li>
+  </ul>
+  </nav>
+  <br />
+  <div class='row'>
+    <div class='large-12 columns'>
+      <h2 class='subheader'>Weather</h2>
+      <ul class='large-block-grid-4 small-block-grid-2'>
+        <li><a href='/api/weather/clear' class='small button expand radius'>Clear</a></li>
+        <li><a href='/api/weather/rain' class='small button expand radius'>Rain</a></li>
+        <li><a href='/api/weather/thunder' class='small button expand radius'>Thunder</a></li>
+      </ul>
+      <h2 class='subheader'>Time of Day</h2>
+      <ul class='large-block-grid-4 small-block-grid-2'>
+        <li><a href='/api/time/day' class='small button expand radius alert'>Day</a></li>
+        <li><a href='/api/time/night' class='small button expand radius alert'>Night</a></li>
+      </ul>
+      <h2 class='subheader'>Spawners</h2>
+      <ul class='large-block-grid-4 small-block-grid-2'>
+        <li><a href='/api/spawn/ozelot' class='small button expand radius secondary'>Ozelot</a></li>
+        <li><a href='/api/spawn/wolf' class='small button expand radius secondary'>Wolf</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <script src="/foundation/js/vendor/jquery.js"></script>
+  <script src="/foundation/js/foundation.min.js"></script>
+  <script>
+    $(document).on('click', '.button', function(e) {
+      e.preventDefault();
+      $.post(this.getAttribute('href'));
+    })
+    $(document).foundation();
+  </script>
+</body>
+</html>
