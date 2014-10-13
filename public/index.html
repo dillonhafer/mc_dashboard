@@ -3,8 +3,9 @@
   <title>MC Tools</title>
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">  
-  <link rel="apple-touch-icon" href="/custom_icon.png">
+  <link rel="apple-touch-icon" href="/images/custom_icon.png">
   <link rel="stylesheet" href="/foundation/css/foundation.css" />
+  <link rel="stylesheet" href="/stylesheets/app.css" />
   <script src="/foundation/js/vendor/modernizr.js"></script>
 </head>
 <body>
@@ -39,12 +40,6 @@
   
   <script src="/foundation/js/vendor/jquery.js"></script>
   <script src="/foundation/js/foundation.min.js"></script>
-  <script>
-    $(document).on('click', '.button', function(e) {
-      e.preventDefault();
-      $.post(this.getAttribute('href'));
-    })
-    $(document).foundation();
-  </script>
+  <script src="/javascripts/app.js"></script>  
 </body>
 </html>
