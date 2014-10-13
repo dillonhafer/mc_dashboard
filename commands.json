@@ -4,5 +4,14 @@
   },
   "/weather/clear":{
     "Command": "weather clear"
+  },
+  "/weather/thunder":{
+    "Command": "weather thunder"
+  },
+  "/time/day":{
+    "Command": "time set day"
+  },
+  "/time/night":{
+    "Command": "time set night"
   }
 }
