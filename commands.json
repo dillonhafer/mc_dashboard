@@ -15,6 +15,6 @@
     "Command": "time set night"
   },
   "/spawn/ozelot":{
-    "Command": "/summon Ozelot 770 70 -400"
+    "Command": "summon Ozelot 770 70 -400"
   }
 }
