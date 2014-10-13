@@ -56,11 +56,6 @@ func FindCmd(cmdName string) string {
 	return mc.Pool[cmdName].Command
 }
 
-func homePage(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Home page")
-	http.FileServer(http.Dir("public"))
-}
-
 func commandApi(mc MinecraftRunner) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != "POST" {
@@ -82,6 +77,7 @@ func commandApi(mc MinecraftRunner) http.HandlerFunc {
 func main() {
 	var screen string
 	var mc MinecraftRunner
+	staticFiles := http.FileServer(http.Dir("public"))
 
 	flag.StringVar(&screen, "screen", "", "runs commands in specific screen")
 	flag.Parse()
@@ -92,14 +88,12 @@ func main() {
 		mc = &Minecraft{Screen: screen}
 	}
 
-	fs := http.FileServer(http.Dir("public"))
-
-	http.Handle("/", fs)
+	http.Handle("/", staticFiles)
 	http.HandleFunc("/api/", commandApi(mc))
 
 	fmt.Println("Server running and listening on port 8000")
+	fmt.Println("Run `mc_dashboard -h` for more startup options")
 	fmt.Println("Ctrl-C to shutdown server")
-
 	err := http.ListenAndServe(":8000", nil)
 	fmt.Fprintln(os.Stderr, err)
 }
