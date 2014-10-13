@@ -16,5 +16,8 @@
   },
   "/spawn/ozelot":{
     "Command": "summon Ozelot 770 70 -400"
+  },
+  "/spawn/wolf":{
+    "Command": "summon Wolf 770 70 -400"
   }
 }
