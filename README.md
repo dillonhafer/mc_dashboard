@@ -8,6 +8,10 @@ of Minecraft server commands for servers using [screen](http://linux.die.net/man
     usage:  mc_dashboard [options]
       -screen="Minecraft": screen of running Minecraft server
 
+## Example
+
+![Screenshot](https://content-na.drive.amazonaws.com/cdproxy/templink/pMzTHOHcCrVMWaZih9i-jfRDfpNukO8UJOhcI8eqD9MLAYspN?viewBox=1230)
+
 ## Copyright
 
 Copyright 2014 Dillon Hafer
