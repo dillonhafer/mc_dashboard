@@ -3,4 +3,4 @@
 set -e
 
 go build
-exec ./mc_minecraft
+exec ./mc_dashboard

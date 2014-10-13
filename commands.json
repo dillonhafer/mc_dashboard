@@ -1,0 +1,8 @@
+{
+  "/weather/rain":{
+    "Command":"weather rain"
+  },
+  "/weather/clear":{
+    "Command": "weather clear"
+  }
+}
