@@ -10,7 +10,7 @@ of Minecraft server commands for servers using [screen](http://linux.die.net/man
 
 ## Example
 
-![Screenshot](https://content-na.drive.amazonaws.com/cdproxy/templink/pMzTHOHcCrVMWaZih9i-jfRDfpNukO8UJOhcI8eqD9MLAYspN?viewBox=1230)
+![Screenshot](https://content-na.drive.amazonaws.com/cdproxy/templink/pMzTHOHcCrVMWaZih9i-jfRDfpNukO8UJOhcI8eqD9MLAYspN?viewBox=630)
 
 ## Copyright
 
